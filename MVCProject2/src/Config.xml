@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--"C:/Users/DS/git/myProject/MVCProject1" DB연결,해제 를 위한 정보를 넘겨줌-->
+<!-- Connection (getConnection(), disConnection()) -->
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 문서정의한거 가져오려면 dtd파일 가져옴 => 태그명 볼 수 있음 -->
+<configuration>
+	<environments default="development"> <!-- 개발 환경 넘겨줌 -->
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- COMMIT, ROLLBACK JDBC: 자바(auto commit) MANAGED: 관리자가 관리 -->
+			<dataSource type="POOLED">
+				<!-- DataSource: 데이터의 모든 정보를 가지고 있는 클래스 
+						driver, url, username, password, maxActive.. 
+					 type
+					 	POOLED : DBCP(미리 만들어놓고 주소 넘기기)
+					 	UNPOOLED : 열고 닫는데 시간 오래걸림
+					 	JNDI : 미리 설정하고 설정된 파일 불러옴 (외부)
+				-->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" />
+				<property name="username" value="scott" />
+				<property name="password" value="9879" />
+				<!-- maxActive: 최대 연결 갯수: 8, maxIdle: 8개 <=== default값 -->
+			</dataSource>
+		</environment>
+	</environments>
+</configuration>
